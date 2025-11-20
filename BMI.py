@@ -1,20 +1,24 @@
+
+# --------------------
+# Membuat kode start dan exit
+# --------------
 def program_bodywise():
-    nama = input("Ketik 'start' (atau ketik 'exit' untuk keluar): ")
+    nama = input("\nKetik 'start' untuk memulai: ")
     if nama.lower() == "exit":
         return "exit"
     nama = nama.title()
 
-    # --- KODE ASLI DIMULAI ---
-    # --------------------
-    # Meminta nilai input nama dari pengguna
-    # --------------------
-    nama = input("Masukkan nama anda: ")
+
+# --------------------
+# Meminta nilai input nama dari pengguna
+# --------------------
+    nama = input("\nMasukkan nama anda: ")
     nama = nama.title()
 
 
-    # --------------------
-    # Meminta nilai input umur dari pengguna
-    # --------------------
+# --------------------
+# Membuat variabel kategori usia
+# --------------------
     kategori_usia_1 = "Kategori anda adalah bayi"
     kategori_usia_2 = "Kategori anda adalah balita"
     kategori_usia_3 = "Kategori anda adalah anak-anak"
@@ -22,13 +26,21 @@ def program_bodywise():
     kategori_usia_5 = "Kategori anda adalah dewasa"
     kategori_usia_6 = "Kategori anda adalah lansia"
 
+
+# --------------------
+# Meminta nilai input umur dari pengguna
+# --------------------
     while True:
         try:
-             umur = int(input("Masukkan umur anda: "))
+             umur = int(input("\nMasukkan umur anda: "))
         except ValueError:
-            print("Maaf, input harus angka bulat positif, bukan huruf!")
+            print("\nMaaf, input harus angka bulat positif, bukan huruf!")
             continue
 
+
+# --------------------
+# Membuat conditional statemen untuk kategori usia
+# --------------------
         if umur > 0 and umur <= 1:
             kategori = kategori_usia_1
             break
@@ -48,67 +60,67 @@ def program_bodywise():
             kategori = kategori_usia_6
             break
         else:
-            print("Maaf, hanya bisa memasukkan bilangan bulat positif(1-100)")
+            print("\nMaaf, hanya bisa memasukkan bilangan bulat positif(1-100)")
             continue
 
 
-    # --------------------
-    # Meminta nilai input gender dari pengguna
-    # --------------------
+# --------------------
+# Meminta nilai input gender dari pengguna
+# --------------------
     while True:
-        gender= input("Masukkan gender anda: ")
+        gender= input("\nMasukkan gender anda: ")
         gender = gender.lower()
-
         if gender == "laki-laki" or gender == "perempuan":
             break
         else:
-            print("Maaf, hanya bisa memasukkan gender laki-laki dan perempuan")
+            print("\nMaaf, hanya bisa memasukkan gender laki-laki dan perempuan")
             continue
 
 
-    # --------------------
-    # Meminta nilai input berat badan dari pengguna
-    # --------------------
+# --------------------
+# Meminta nilai input berat badan dari pengguna
+# --------------------
     while True:
         try:
-            berat_badan = float(input("Masukkan berat badan anda (kg): "))
+            berat_badan = float(input("\nMasukkan berat badan anda (kg): "))
             if berat_badan < 0:
-                print("Maaf, berat badan tidak boleh negatif!")
+                print("\nMaaf, berat badan tidak boleh negatif!")
                 continue 
             if berat_badan == 0:
-                print("Maaf, berat badan tidak boleh 0!")
+                print("\nMaaf, berat badan tidak boleh 0!")
                 continue  
             break 
         except ValueError:
-            print("Maaf, input harus angka, bukan huruf!")
+            print("\nMaaf, input harus angka, bukan huruf!")
 
-    # --------------------
-    # Meminta nilai input tinggi badan dari pengguna
-    # --------------------
+
+# --------------------
+# Meminta nilai input tinggi badan dari pengguna
+# --------------------
     while True:
         try:
-            tinggi_badan = float(input("Masukkan tinggi badan anda(cm): "))        
+            tinggi_badan = float(input("\nMasukkan tinggi badan anda(cm): "))        
             if tinggi_badan < 0:
-                print("Maaf, tinggi badan tidak boleh negatif!")
+                print("\nMaaf, tinggi badan tidak boleh negatif!")
                 continue
             if tinggi_badan == 0:
-                print("Maaf, tinggi badan tidak boleh 0!")
+                print("\nMaaf, tinggi badan tidak boleh 0!")
                 continue
             break  
         except ValueError:
-            print("Maaf, input harus bilangan positif, bukan huruf!")
+            print("nMaaf, input harus bilangan positif, bukan huruf!")
 
 
+# --------------------
+# Membuat variabel BMI
+# --------------------
     tinggi_badan = tinggi_badan / 100
     BMI = berat_badan / (tinggi_badan ** 2)
 
 
-
-
-
-    # --------------------
-    # Membuat kategori untuk bayi
-    # --------------------
+# --------------------
+# Membuat variabel untuk z_score
+# --------------------
     bmi_z = -4
     bmi_a = -3
     bmi_b = -2
@@ -120,7 +132,9 @@ def program_bodywise():
     bmi_h = 4
 
 
-    # bayi laki-laki
+# --------------------
+# Membuat conditional statemen untuk z_score
+# --------------------
     if kategori == "Kategori anda adalah bayi" and gender == "laki-laki" and umur == 1:
         if BMI < 12.7:
             z_score = bmi_z
@@ -848,6 +862,10 @@ def program_bodywise():
         elif BMI > 36.2:
             z_score = bmi_h    
 
+
+# --------------------
+# Membuat variabel kategori_bayi dari conditional statemen 
+# --------------------
     if umur >= 1 and umur <= 20 and z_score == -4:
         kategori_bayi = "Malnutrisi"
     elif umur >= 1 and umur <= 20 and z_score in [-3, -2]:
@@ -862,32 +880,32 @@ def program_bodywise():
         kategori_bayi = "Obesitas"
 
 
-
-    # --------------------
-    # Membuat kategori untuk dewasa dan lansia
-    # --------------------
+# --------------------
+# Membuat variabel kategori_bmi  untuk dewasa dan lansia
+# --------------------
     if kategori == "Kategori anda adalah dewasa":
         if BMI < 18.5:
-            kategori_BMI = "Underweight"           
+            kategori_BMI = "Underweight"          
         elif BMI >=18.5 and BMI <= 24.9:
-            kategori_BMI = "Normal"                       
+            kategori_BMI = "Normal"                    
         elif BMI >= 25 and BMI <= 29.9:
-            kategori_BMI = "Overweight"                 
+            kategori_BMI = "Overweight"             
         elif BMI >=30:
-            kategori_BMI = "Obesitas"                      
+            kategori_BMI = "Obesitas"                 
     elif kategori == "Kategori anda adalah lansia":
         if BMI < 22:
-            kategori_BMI = "Malnutrisi"                   
+            kategori_BMI = "Malnutrisi"               
         elif BMI >= 22 and BMI <=27:
             kategori_BMI = "Normal"                    
         elif BMI >=27.1 and BMI < 30:
-            kategori_BMI = "Overweight"                 
+            kategori_BMI = "Overweight"             
         elif BMI >= 30:
             kategori_BMI = "Obesitas"
 
 
-
-
+# --------------------
+# Membuat variabel penyebab, risiko, dan upaya
+# --------------------
     penyebab_bayi_malnutrisi = ["ASI tidak cukup", "Teknik menyusu tidak benar (bayi tidak efektif mengisap)", "MPASI terlambat atau kurang energi", "Infeksi berulang (diare, ISPA, pneumonia)", "Berat lahir rendah", "Penyakit bawaan", "Ibu kurang gizi", "Lingkungan tidak higienis â†’ = infeksi"]    
     risiko_bayi_malnutrisi = ["Infeksi berat (pneumonia, diare akut)", "Pertumbuhan terhambat (stunting)", "Berat badan tidak naik (failure to thrive)", "Kekurangan gizi akut (wasting)", "Dehidrasi cepat", "Penurunan perkembangan otak", "Risiko kematian meningkat pada malnutrisi berat"] 
     upaya_bayi_malnutrisi = ["Perbaiki teknik & frekuensi menyusu", "Tambah volume ASI/perah bila perlu", "Susu formula sesuai anjuran dokter jika ASI tidak cukup", "MPASI energi tinggi mulai 6 bulan", "Obati infeksi", "Pantau pertumbuhan tiap bulan", "Periksakan dan konsultasi ke dokter"] 
@@ -1033,349 +1051,353 @@ def program_bodywise():
     upaya_lansia_obesitas = ["Pola makan seimbang, tidak terlalu ketat", "Konsumsi protein cukup (1â€“1.2 g/kgBB/hari)", "Jalan kaki 30â€“45 menit/hari", "Latihan kekuatan ringan untuk menjaga otot", "Pantau rutin: gula darah, kolesterol, tekanan darah", "Batasi gula, gorengan, dan makanan tinggi garam", "Periksakan dan konsultasi ke dokter"]              
 
 
-    # --------------------
-    # Mengoutputkan BMI
-    # --------------------
-    print("-" * 20)
-    print("Nama: ", nama)
-    print("Gender: ", gender)
-    print("Umur: ", umur, "tahun")
-    print("Kategori: ", kategori)
-    print("Berat badan: ", int(berat_badan), "kg")
-    print("Tinggi badan: ", int(tinggi_badan) * 100, "cm")
-    print("BMI: ", BMI)
+# --------------------
+# Mengoutputkan hasil untuk pengguna
+# --------------------
+    print("-" * 40)
+    print("Nama           : ", nama)
+    print("Gender         : ", gender)
+    print("Umur           : ", umur, "tahun")
+    print("Kategori       : ", kategori)
+    print("Berat badan    : ", int(berat_badan), "kg")
+    print("Tinggi badan   : ", int(tinggi_badan) * 100, "cm")
+    print("BMI            : ", BMI)
     if kategori == "Kategori anda adalah bayi" or kategori == "Kategori anda adalah balita" or kategori == "Kategori anda adalah anak-anak" or kategori == "Kategori anda adalah remaja":
-    	print("Kategori BMI: ", kategori_bayi)
+    	print("Kategori BMI   : ", kategori_bayi)
     elif kategori == "Kategori anda adalah dewasa" or kategori == "Kategori anda adalah lansia":
-    	print("Kategori BMI: ", kategori_BMI)
+    	print("Kategori BMI   : ", kategori_BMI)
+
 
     if umur > 0 and umur <= 1 and kategori_bayi == "Malnutrisi":
-        print("\n Penyebab malnutrisi pada bayi, antara lain:")
+        print("\n \033[91mPenyebab malnutrisi pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko malnutrisi pada bayi, antara lain:")
+        print("\n \033[93mRisiko malnutrisi pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi malnutrisi pada bayi, antara lain:")
+        print("\n \033[92mCara mengatasi malnutrisi pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_malnutrisi, start=1):
             print(f"{i}. {w}")
     elif umur > 0 and umur <= 1 and kategori_bayi == "Underweight":
-        print("\n Penyebab underweight pada bayi, antara lain:")
+        print("\n \033[91mPenyebab underweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko underweight pada bayi, antara lain:")
+        print("\n \033[93mRisiko underweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi underweight pada bayi, antara lain:")
+        print("\n \033[92mCara mengatasi underweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_underweight, start=1):
             print(f"{i}. {w}")
     elif umur > 0 and umur <= 1 and kategori_bayi == "Normal":
-        print("\n Penyebab status normal pada bayi, antara lain:")
+        print("\n \033[91mPenyebab status normal pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada bayi, antara lain:")
+        print("\n \033[93mRisiko status normal pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada bayi, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_normal, start=1):
             print(f"{i}. {w}")
     elif umur > 0 and umur <= 1 and kategori_bayi == "Risiko overweight":
-        print("\n Penyebab risiko overweight pada bayi, antara lain:")
+        print("\n \033[91mPenyebab risiko overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada bayi, antara lain:")
+        print("\n \033[93mRisiko overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi risiko overweight pada bayi, antara lain:")
+        print("\n \033[92mCara mengatasi risiko overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_risiko_overweight, start=1):
             print(f"{i}. {w}")
     elif umur > 0 and umur <= 1 and kategori_bayi == "Overweight":
-        print("\n Penyebab overweight pada bayi, antara lain:")
+        print("\n \033[91mPenyebab overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada bayi, antara lain:")
+        print("\n \033[93mRisiko overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada bayi, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_overweight, start=1):
             print(f"{i}. {w}")
     elif umur > 0 and umur <= 1 and kategori_bayi == "Obesitas":
-        print("\n Penyebab obesitas pada bayi, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada bayi, antara lain:\033[0m")
         for i, w in enumerate(penyebab_bayi_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada bayi, antara lain:")
+        print("\n \033[93mRisiko obesitas pada bayi, antara lain:\033[0m")
         for i, w in enumerate(risiko_bayi_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada bayi, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada bayi, antara lain:\033[0m")
         for i, w in enumerate(upaya_bayi_obesitas, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Malnutrisi":
-        print("\n Penyebab malnutrisi pada balita, antara lain:")
+        print("\n \033[91mPenyebab malnutrisi pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko malnutrisi pada balita, antara lain:")
+        print("\n \033[93mRisiko malnutrisi pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi malnutrisi pada balita, antara lain:")
+        print("\n \033[92mCara mengatasi malnutrisi pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_malnutrisi, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Underweight":
-        print("\n Penyebab underweight pada balita, antara lain:")
+        print("\n \033[91mPenyebab underweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko underweight pada balita, antara lain:")
+        print("\n \033[93mRisiko underweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi underweight pada balita, antara lain:")
+        print("\n \033[92mCara mengatasi underweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_underweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Normal":
-        print("\n Penyebab status normal pada balita, antara lain:")
+        print("\n \033[91mPenyebab status normal pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada balita, antara lain:")
+        print("\n \033[93mRisiko status normal pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada balita, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_normal, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Risiko overweight":
-        print("\n Penyebab risiko overweight pada balita, antara lain:")
+        print("\n \033[91mPenyebab risiko overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada balita, antara lain:")
+        print("\n \033[93mRisiko overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi risiko overweight pada balita, antara lain:")
+        print("\n \033[92mCara mengatasi risiko overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_risiko_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Overweight":
-        print("\n Penyebab overweight pada balita, antara lain:")
+        print("\n \033[91mPenyebab overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada balita, antara lain:")
+        print("\n \033[93mRisiko overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada balita, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 2 and umur <= 5 and kategori_bayi == "Obesitas":
-        print("\n Penyebab obesitas pada balita, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada balita, antara lain:\033[0m")
         for i, w in enumerate(penyebab_balita_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada balita, antara lain:")
+        print("\n \033[93mRisiko obesitas pada balita, antara lain:\033[0m")
         for i, w in enumerate(risiko_balita_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada balita, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada balita, antara lain:\033[0m")
         for i, w in enumerate(upaya_balita_obesitas, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Malnutrisi":
-        print("\n Penyebab malnutrisi pada anak, antara lain:")
+        print("\n \033[91mPenyebab malnutrisi pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko malnutrisi pada anak, antara lain:")
+        print("\n \033[93mRisiko malnutrisi pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi malnutrisi pada anak, antara lain:")
+        print("\n \033[92mCara mengatasi malnutrisi pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_malnutrisi, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Underweight":
-        print("\n Penyebab underweight pada anak, antara lain:")
+        print("\n \033[91mPenyebab underweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko underweight pada anak, antara lain:")
+        print("\n \033[93mRisiko underweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi underweight pada anak, antara lain:")
+        print("\n \033[92mCara mengatasi underweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_underweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Normal":
-        print("\n Penyebab status normal pada anak, antara lain:")
+        print("\n \033[91mPenyebab status normal pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada anak, antara lain:")
+        print("\n \033[93mRisiko status normal pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada anak, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_normal, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Risiko overweight":
-        print("\n Penyebab risiko overweight pada anak, antara lain:")
+        print("\n \033[91mPenyebab risiko overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada anak, antara lain:")
+        print("\n \033[93mRisiko overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi risiko overweight pada anak, antara lain:")
+        print("\n \033[92mCara mengatasi risiko overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_risiko_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Overweight":
-        print("\n Penyebab overweight pada anak, antara lain:")
+        print("\n \033[91mPenyebab overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada anak, antara lain:")
+        print("\n \033[93mRisiko overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada anak, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 6 and umur <= 10 and kategori_bayi == "Obesitas":
-        print("\n Penyebab obesitas pada anak, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada anak, antara lain:\033[0m")
         for i, w in enumerate(penyebab_anak_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada anak, antara lain:")
+        print("\n \033[93mRisiko obesitas pada anak, antara lain:\033[0m")
         for i, w in enumerate(risiko_anak_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada anak, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada anak, antara lain:\033[0m")
         for i, w in enumerate(upaya_anak_obesitas, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Malnutrisi":
-        print("\n Penyebab malnutrisi pada remaja, antara lain:")
+        print("\n \033[91mPenyebab malnutrisi pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko malnutrisi pada remaja, antara lain:")
+        print("\n \033[93mRisiko malnutrisi pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi malnutrisi pada remaja, antara lain:")
+        print("\n \033[92mCara mengatasi malnutrisi pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_malnutrisi, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Underweight":
-        print("\n Penyebab underweight pada remaja, antara lain:")
+        print("\n \033[91mPenyebab underweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko underweight pada remaja, antara lain:")
+        print("\n \033[93mRisiko underweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi underweight pada remaja, antara lain:")
+        print("\n \033[92mCara mengatasi underweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_underweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Normal":
-        print("\n Penyebab status normal pada remaja, antara lain:")
+        print("\n \033[91mPenyebab status normal pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada remaja, antara lain:")
+        print("\n \033[93mRisiko status normal pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada remaja, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_normal, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Risiko overweight":
-        print("\n Penyebab risiko overweight pada remaja, antara lain:")
+        print("\n \033[91mPenyebab risiko overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada remaja, antara lain:")
+        print("\n \033[93mRisiko overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_risiko_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi risiko overweight pada remaja, antara lain:")
+        print("\n \033[92mCara mengatasi risiko overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_risiko_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Overweight":
-        print("\n Penyebab overweight pada remaja, antara lain:")
+        print("\n \033[91mPenyebab overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada remaja, antara lain:")
+        print("\n \033[93mRisiko overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada remaja, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 11 and umur <= 19 and kategori_bayi == "Obesitas":
-        print("\n Penyebab obesitas pada remaja, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada remaja, antara lain:\033[0m")
         for i, w in enumerate(penyebab_remaja_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada remaja, antara lain:")
+        print("\n \033[93mRisiko obesitas pada remaja, antara lain:\033[0m")
         for i, w in enumerate(risiko_remaja_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada remaja, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada remaja, antara lain:\033[0m")
         for i, w in enumerate(upaya_remaja_obesitas, start=1):
             print(f"{i}. {w}")
     elif umur >= 20 and umur <= 60 and kategori_BMI == "Underweight":
-        print("\n Penyebab underweight pada dewasa, antara lain:")
+        print("\n \033[91mPenyebab underweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(penyebab_dewasa_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko underweight pada dewasa, antara lain:")
+        print("\n \033[93mRisiko underweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(risiko_dewasa_underweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi underweight pada dewasa, antara lain:")
+        print("\n \033[92mCara mengatasi underweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(upaya_dewasa_underweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 20 and umur <= 60 and kategori_BMI == "Normal":
-        print("\n Penyebab status normal pada dewasa, antara lain:")
+        print("\n \033[91mPenyebab status normal pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(penyebab_dewasa_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada dewasa, antara lain:")
+        print("\n \033[93mRisiko status normal pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(risiko_dewasa_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada dewasa, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(upaya_dewasa_normal, start=1):
             print(f"{i}. {w}")
     elif umur >= 20 and umur <= 60 and kategori_BMI == "Overweight":
-        print("\n Penyebab overweight pada dewasa, antara lain:")
+        print("\n \033[91mPenyebab overweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(penyebab_dewasa_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada dewasa, antara lain:")
+        print("\n \033[93mRisiko overweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(risiko_dewasa_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada dewasa, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(upaya_dewasa_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 20 and umur <= 60 and kategori_BMI == "Obesitas":
-        print("\n Penyebab obesitas pada dewasa, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(penyebab_dewasa_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada dewasa, antara lain:")
+        print("\n \033[93mRisiko obesitas pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(risiko_dewasa_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada dewasa, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada dewasa, antara lain:\033[0m")
         for i, w in enumerate(upaya_dewasa_obesitas, start=1):
             print(f"{i}. {w}")
     elif umur >= 61 and kategori_BMI == "Malnutrisi":
-        print("\n Penyebab malnutrisi pada lansia, antara lain:")
+        print("\n \033[91mPenyebab malnutrisi pada lansia, antara lain:\033[0m")
         for i, w in enumerate(penyebab_lansia_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko malnutrisi pada lansia, antara lain:")
+        print("\n \033[93mRisiko malnutrisi pada lansia, antara lain:\033[0m")
         for i, w in enumerate(risiko_lansia_malnutrisi, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi malnutrisi pada lansia, antara lain:")
+        print("\n \033[92mCara mengatasi malnutrisi pada lansia, antara lain:\033[0m")
         for i, w in enumerate(upaya_lansia_malnutrisi, start=1):
             print(f"{i}. {w}")
     elif umur >= 61 and kategori_BMI == "Normal":
-        print("\n Penyebab status normal pada lansia, antara lain:")
+        print("\n \033[91mPenyebab status normal pada lansia, antara lain:\033[0m")
         for i, w in enumerate(penyebab_lansia_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko status normal pada lansia, antara lain:")
+        print("\n \033[93mRisiko status normal pada lansia, antara lain:\033[0m")
         for i, w in enumerate(risiko_lansia_normal, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mempertahankan status normal pada lansia, antara lain:")
+        print("\n \033[92mCara mempertahankan status normal pada lansia, antara lain:\033[0m")
         for i, w in enumerate(upaya_lansia_normal, start=1):
             print(f"{i}. {w}")
     elif umur >= 61 and kategori_BMI == "Overweight":
-        print("\n Penyebab overweight pada lansia, antara lain:")
+        print("\n \033[91mPenyebab overweight pada lansia, antara lain:\033[0m")
         for i, w in enumerate(penyebab_lansia_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko overweight pada lansia, antara lain:")
+        print("\n \033[93mRisiko overweight pada lansia, antara lain:\033[0m")
         for i, w in enumerate(risiko_lansia_overweight, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi overweight pada lansia, antara lain:")
+        print("\n \033[92mCara mengatasi overweight pada lansia, antara lain:\033[0m")
         for i, w in enumerate(upaya_lansia_overweight, start=1):
             print(f"{i}. {w}")
     elif umur >= 61 and kategori_BMI == "Obesitas":
-        print("\n Penyebab obesitas pada lansia, antara lain:")
+        print("\n \033[91mPenyebab obesitas pada lansia, antara lain:\033[0m")
         for i, w in enumerate(penyebab_lansia_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Risiko obesitas pada lansia, antara lain:")
+        print("\n \033[93mRisiko obesitas pada lansia, antara lain:\033[0m")
         for i, w in enumerate(risiko_lansia_obesitas, start=1):
             print(f"{i}. {w}")
-        print("\n Cara mengatasi obesitas pada lansia, antara lain:")
+        print("\n \033[92mCara mengatasi obesitas pada lansia, antara lain:\033[0m")
         for i, w in enumerate(upaya_lansia_obesitas, start=1):
             print(f"{i}. {w}")
 
-    print("-" * 20)
-    # --- KODE ASLI BERAKHIR ---
+    print("-" * 40)
+    
 
+# --------------------
+# Membuat kode untuk mengulanh atau keluar dari program
+# --------------------
     print("\nProgram selesai dijalankan untuk", nama)
     return "done"
-
+    
 while True:
     hasil = program_bodywise()
     if hasil == "exit":
@@ -1390,4 +1412,3 @@ while True:
         break
 
 print("Selesai.")
-
